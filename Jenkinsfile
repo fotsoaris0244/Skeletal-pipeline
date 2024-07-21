@@ -4,13 +4,13 @@ pipeline {
     stage('Buzz Build') {
       agent any
       steps {
-        sh './jenkins/build.sh'
+        sh './hello.sh'
       }
     }
 
     stage('Buzz Test') {
       steps {
-        sh './jenkins/test-all.sh'
+        sh './test_hello.sh'
       }
     }
 
