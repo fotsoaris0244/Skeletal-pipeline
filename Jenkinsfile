@@ -11,9 +11,21 @@ pipeline {
     }
 
     stage('Buzz Test') {
-      steps {
-        sh './test_hello.sh'
-        junit '**/surefire-reports/**/*.xml'
+      parallel {
+        stage('Buzz Test') {
+          steps {
+            sh './test_hello.sh'
+            junit '**/surefire-reports/**/*.xml'
+          }
+        }
+
+        stage('Testing B') {
+          steps {
+            sh '''sleep 10
+echo done'''
+          }
+        }
+
       }
     }
 
