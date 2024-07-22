@@ -5,6 +5,7 @@ pipeline {
       agent any
       steps {
         sh './hello.sh'
+        archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
     }
 
