@@ -12,6 +12,7 @@ pipeline {
     stage('Buzz Test') {
       steps {
         sh './test_hello.sh'
+        junit '**/surefire-reports/**/*.xml'
       }
     }
 
