@@ -4,7 +4,8 @@ pipeline {
     stage('Buzz Build') {
       agent any
       steps {
-        sh './hello.sh'
+        sh '''echo "I am a ${BUZZ_NAME}"
+./hello.sh'''
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
     }
@@ -16,5 +17,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    BUZZ_NAME = 'Worker Bee'
   }
 }
